@@ -8,8 +8,6 @@ const port = 3000
 //引入handlebars
 const exphbs = require('express-handlebars')
 
-//引入rest
-const Rest = require('./models/rest.js')
 
 //引入method-override
 const methodOverride = require('method-override')
@@ -17,8 +15,8 @@ const methodOverride = require('method-override')
 //引入mongoose
 const mongoose = require('mongoose')
 
-//引入json檔案
-const restaurantList = require('./restaurant.json')
+//引入router
+const routes = require('./routes')
 
 //引入body-parser
 const bodyParser = require('body-parser')
@@ -53,90 +51,10 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //每筆request都會先經過method-override處理
 app.use(methodOverride('_method'))
 
+//每筆request都會先經過routes處理
+app.use(routes)
 
-//設定路由
 
-//首頁render mongodb資料
-app.get('/', (req, res) => {
-  Rest.find()
-    .lean()
-    .then(rests => res.render('index', { rests }))
-    .catch(error => console.error(error))
-})
-//新增餐廳頁面
-app.get('/rests/new', (req, res) => {
-  res.render('new')
-})
-//新增餐廳資料功能
-app.post('/rests', (req, res) => {
-  const {name, name_en, category, image, location, phone, google_map, rating, description} = req.body
-  return Rest.create({ name, name_en, category, image, location, phone, google_map, rating, description })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-//餐廳詳細資料頁面
-app.get('/rests/:id', (req, res) => {
-  const id = req.params.id
-  return Rest.findById(id)
-    .lean()
-    .then((rest) => res.render('show', { rest }))
-    .catch(error => console.log(error))
-})
-
-//編輯餐廳資料頁面
-app.get('/rests/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Rest.findById(id)
-    .lean()
-    .then((rest) => res.render('edit', { rest }))
-    .catch(error => console.log(error))
-})
-//編輯餐廳資料功能
-app.put('/rests/:id', (req, res) => {
-  const id = req.params.id
-  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
-  return Rest.findById(id)
-    .then((rest) => {
-      rest.name = name
-      rest.name_en = name_en
-      rest.category = category
-      rest.image = image
-      rest.location = location
-      rest.phone = phone
-      rest.google_map = google_map
-      rest.rating = rating
-      rest.description = description
-      return rest.save()
-    })
-    .then(() => res.redirect(`/rests/${id}`))
-    .catch(error => console.log(error))
-})
-//刪除功能
-app.delete('/rests/:id', (req, res) => {
-  const id = req.params.id
-  return Rest.findById(id)
-    .then((rest) => rest.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-//搜尋功能
-app.get('/search', (req, res) => {
-  const categoryArray = []
-  Rest.find()
-    .lean()
-    .then((rests) => {
-      rests.forEach(rest => categoryArray.push(rest.category))
-      if (categoryArray.some(item => item.toLowerCase().includes(req.query.keyword.toLowerCase()))) {
-        const types = rests.filter(item => item.category.toLowerCase().includes(req.query.keyword.toLowerCase()))
-        res.render('index', { rests: types, keyword: req.query.keyword })
-      } else {
-        const restaurantArray = rests.filter(item => item.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
-        res.render('index', { rests: restaurantArray, keyword: req.query.keyword })
-      }
-    })
-  
-})
 //啟動並監聽伺服器
 app.listen(port, () => {
   console.log(`The web is Listen on http://localhost:${port}`)
