@@ -1,22 +1,39 @@
 <!-- search bar -->
-<div class="container search-bar">
-  <div class="search-bar-outer">
-    <div class="search-bar-inner">
-      <form action="/search">
-        <h4 class="mb-2">尋找餐廳：</h4>
-        <div class="input-group">
-          <input type="text" name="keyword" class="form-control" placeholder="輸入餐廳、分類" aria-label="Restaurant Name..."
-            value="{{keyword}}" aria-describedby="search-button">
-          <div class="input-group-append">
+<div class="container mt-5">
+  <div class="row search-bar-inner">
+    <div class="col-md-10 col-12 mx-auto">
+      <form action="/search" class="d-flex flex-row justify-content-between ">
+        <div class="w-25 d-flex flex-row">
+          <input type="text" name="keyword" class="form-control search-input" placeholder="輸入餐廳、分類"
+            aria-label="Restaurant Name..." value="{{keyword}}" aria-describedby="search-button">
+          <div class="input-group-append px-1">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
         </div>
+        <!-- dropdown -->
+        <div class="dropdown me-1">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            排序
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a  class="dropdown-item" name="name" href="/sort/A-Z">A -> Z</a></li>
+            <li><a  class="dropdown-item" href="/sort/Z-A">Z -> A</a></li>
+            <li><a  class="dropdown-item" href="/sort/category">類別</a></li>
+            <li><a  class="dropdown-item" href="/sort/location">地區</a></li>
+            <li><a  class="dropdown-item" href="/sort/rating">評分</a></li>
+          </ul>
+        </div>
       </form>
     </div>
+
   </div>
 </div>
+
+
+
 <!-- restaurant list -->
-<div class="container mt-5">
+<div class="container mt-3">
   <div class="row">
     <div class="col-md-10 col-12 mx-auto">
       <div class="row row-cols-sm-3">
@@ -40,10 +57,10 @@
             </div>
           </a>
           <div class="mb-2 d-flex justify-content-end">
-            <form class="me-2" action="/rests/{{this._id}}/edit" style="display: inline";>
+            <form class="me-2" action="/rests/{{this._id}}/edit" style="display: inline" ;>
               <button type="submit" class="btn btn-outline-success">編輯</button>
             </form>
-            <form class="me-2"  action="/rests/{{this._id}}" style="display: inline";>
+            <form class="me-2" action="/rests/{{this._id}}" style="display: inline" ;>
               <button type="submit" class="btn btn-outline-info">詳細資料</button>
             </form>
             <form action="/rests/{{this._id}}?_method=DELETE" style="display: inline" ; method="POST">
