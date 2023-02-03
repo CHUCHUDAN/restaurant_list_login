@@ -46,7 +46,7 @@
             <form class="me-2"  action="/rests/{{this._id}}" style="display: inline";>
               <button type="submit" class="btn btn-outline-info">詳細資料</button>
             </form>
-            <form action="/rests/{{this._id}}/delete" style="display: inline" ; method="POST">
+            <form action="/rests/{{this._id}}?_method=DELETE" style="display: inline" ; method="POST">
               <button type="submit" class="btn btn-outline-danger">刪除</button>
             </form>
           </div>

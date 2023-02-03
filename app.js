@@ -11,6 +11,9 @@ const exphbs = require('express-handlebars')
 //引入rest
 const Rest = require('./models/rest.js')
 
+//引入method-override
+const methodOverride = require('method-override')
+
 //引入mongoose
 const mongoose = require('mongoose')
 
@@ -47,8 +50,9 @@ app.use(express.static('public'))
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//設定種類資料
-const typeArray = ['中東料理', '日本料理', '義式餐廳', '美式', '酒吧', '咖啡']
+//每筆request都會先經過method-override處理
+app.use(methodOverride('_method'))
+
 
 //設定路由
 
@@ -65,16 +69,7 @@ app.get('/rests/new', (req, res) => {
 })
 //新增餐廳資料功能
 app.post('/rests', (req, res) => {
-  const body = req.body
-  const name = body.name
-  const name_en = body.name_en
-  const category = body.category
-  const image = body.image
-  const location = body.location
-  const phone = body.phone
-  const google_map = body.google_map
-  const rating = body.rating
-  const description = body.description
+  const {name, name_en, category, image, location, phone, google_map, rating, description} = req.body
   return Rest.create({ name, name_en, category, image, location, phone, google_map, rating, description })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
@@ -97,18 +92,9 @@ app.get('/rests/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 //編輯餐廳資料功能
-app.post('/rests/:id/edit', (req, res) => {
+app.put('/rests/:id', (req, res) => {
   const id = req.params.id
-  const body = req.body
-  const name = body.name
-  const name_en = body.name_en
-  const category = body.category
-  const image = body.image
-  const location = body.location
-  const phone = body.phone
-  const google_map = body.google_map
-  const rating = body.rating
-  const description = body.description
+  const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Rest.findById(id)
     .then((rest) => {
       rest.name = name
@@ -126,7 +112,7 @@ app.post('/rests/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 //刪除功能
-app.post('/rests/:id/delete', (req, res) => {
+app.delete('/rests/:id', (req, res) => {
   const id = req.params.id
   return Rest.findById(id)
     .then((rest) => rest.remove())
