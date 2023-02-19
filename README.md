@@ -43,11 +43,11 @@ Installing - 專案安裝流程
 ----
 1.打開你的 terminal，Clone 此專案至本機電腦
 
-    git clone https://github.com/CHUCHUDAN/restaurant_list_new_vision.git
+    git clone https://github.com/CHUCHUDAN/restaurant_list_refactor.git
     
 2.開啟終端機(Terminal)，進入存放此專案的資料夾
 
-    cd restaurant_list_new_vision
+    cd restaurant_list_refactor
     
 3.安裝 express 套件
 
