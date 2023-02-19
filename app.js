@@ -19,12 +19,18 @@ const routes = require('./routes')
 //引入body-parser
 const bodyParser = require('body-parser')
 
+
+
 //引入mongoose模組
 require('./config/mongoose')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+
+
+
+// 用 app.use 規定每一筆請求都需要透過 express.static 進行前置處理
 app.use(express.static('public'))
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
@@ -35,6 +41,8 @@ app.use(methodOverride('_method'))
 
 //每筆request都會先經過routes處理
 app.use(routes)
+
+
 
 
 //啟動並監聽伺服器

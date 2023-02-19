@@ -1,0 +1,41 @@
+<!-- search bar -->
+<div class="container mt-5">
+  <div class="row search-bar-inner">
+    <div class="col-md-10 col-12 mx-auto">
+      <form action="/search" class="d-flex flex-row justify-content-between ">
+        <div class="w-25 d-flex flex-row">
+          <input type="text" name="keyword" class="form-control search-input" placeholder="輸入餐廳、分類"
+            aria-label="Restaurant Name..." value="{{keywords}}" aria-describedby="search-button">
+          <div class="input-group-append px-1">
+            <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
+          </div>
+        </div>
+        <!-- dropdown -->
+        <div class="dropdown me-1">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            排序
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" name="name" href="/sort/A-Z">A -> Z</a></li>
+            <li><a class="dropdown-item" href="/sort/Z-A">Z -> A</a></li>
+            <li><a class="dropdown-item" href="/sort/category">類別</a></li>
+            <li><a class="dropdown-item" href="/sort/location">地區</a></li>
+            <li><a class="dropdown-item" href="/sort/rating">評分</a></li>
+          </ul>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div style="width: 25rem;height: 15rem;">
+      <img src="http://5b0988e595225.cdn.sohucs.com/images/20180930/2b2f08b5c6d3470a89d0d9c1f5be3307.jpeg"
+        class="card-img-top" alt="...">
+      <h3 class="mt-2" style="font-weight: bold;">很抱歉，找不到關鍵字{{keywords}}</h3>
+    </div>
+  </div>
+</div>

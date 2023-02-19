@@ -7,9 +7,10 @@ const Rest = require('../../models/rest')
 
 //首頁render mongodb資料
 router.get('/', (req, res) => {
+  const name = "dan"
   Rest.find()
     .lean()
-    .then(rests => res.render('index', { rests }))
+    .then(rests => res.render('index', { rests , name}))
     .catch(error => console.error(error))
 })
 

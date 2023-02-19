@@ -7,17 +7,20 @@ const Rest = require('../../models/rest')
 
 //搜尋功能
 router.get('/', (req, res) => {
-  const categoryArray = []
   Rest.find()
     .lean()
     .then((rests) => {
-      rests.forEach(rest => categoryArray.push(rest.category))
-      if (categoryArray.some(item => item.toLowerCase().includes(req.query.keyword.toLowerCase()))) {
-        const types = rests.filter(item => item.category.toLowerCase().includes(req.query.keyword.toLowerCase()))
-        res.render('index', { rests: types, keyword: req.query.keyword })
+      if (!req.query.keyword) {
+        return res.redirect('/')
+      }
+      const keywords = req.query.keyword
+      const keyword = req.query.keyword.trim().toLowerCase()
+      const searchResultArray = rests.filter(data => data.name.toLowerCase().includes(keyword) || data.category.toLowerCase().includes(keyword) || data.name_en.toLowerCase().includes(keyword))
+
+      if (searchResultArray.length === 0) {
+        return res.render('noresult', { keywords })
       } else {
-        const restaurantArray = rests.filter(item => item.name.toLowerCase().includes(req.query.keyword.toLowerCase()))
-        res.render('index', { rests: restaurantArray, keyword: req.query.keyword })
+        return res.render('index', { rests: searchResultArray, keywords })
       }
     })
 })
