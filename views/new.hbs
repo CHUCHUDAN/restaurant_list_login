@@ -2,45 +2,64 @@
   <div class="row justify-content-center">
     <div class="col-sm-6 border border-2--primary pb-2">
       <h3 class="text-center mt-2">新增餐廳</h3>
-      <form action="/rests" method="POST">
+      <form novalidate action="/rests" method="POST" class="edit-form">
         <div class="mb-3">
           <label for="name" class="form-label">餐廳名稱</label>
-          <input type="text" class="form-control" id="name" name="name">
+          <input type="text" class="form-control" id="name" name="name" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="name_en" class="form-label">餐廳英文名稱</label>
-          <input type="text" class="form-control" id="name_en" name="name_en">
+          <input type="text" class="form-control" id="name_en" name="name_en" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="category" class="form-label">餐廳種類</label>
-          <input type="text" class="form-control" id="category" name="category">
+          <input type="text" class="form-control" id="category" name="category" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">餐廳圖片</label>
-          <input type="text" class="form-control" id="image" name="image">
+          <input type="text" class="form-control" id="image" name="image" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="location" class="form-label">餐廳地址</label>
-          <input type="text" class="form-control" id="location" name="location">
+          <input type="text" class="form-control" id="location" name="location" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">餐廳電話</label>
-          <input type="text" class="form-control" id="phone" name="phone">
+          <input type="text" class="form-control" id="phone" name="phone" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="google_map" class="form-label">餐廳google map</label>
-          <input type="text" class="form-control" id="google_map" name="google_map">
+          <input type="text" class="form-control" id="google_map" name="google_map" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="rating" class="form-label">餐廳評分</label>
-          <input type="text" class="form-control" id="rating" name="rating">
+          <input type="text" class="form-control" id="rating" name="rating" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目必填</div>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">餐廳簡短描述</label>
-          <input type="text" class="form-control" id="description" name="description">
+          <input type="text" class="form-control" id="description" name="description" required>
+          <div class="valid-feedback">格式符合</div>
+          <div class="invalid-feedback">這個項目是必填</div>
         </div>
-        <button type="submit" class="btn btn-primary">建立餐廳</button>
+        <button type="submit" class="btn btn-primary submit-btn">建立餐廳</button>
       </form>
     </div>
   </div>
 </div>
+<script src="/javascripts/verify.js"></script>

@@ -33,7 +33,7 @@ const resSchema = new Schema({
     required: true
   },
   rating: {
-    type: Number,
+    type: String,
     required: true
   },
   description: {
