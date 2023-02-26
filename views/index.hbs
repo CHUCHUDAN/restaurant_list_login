@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="row search-bar-inner">
     <div class="col-md-10 col-12 mx-auto">
-      <form action="/search" class="d-flex flex-row justify-content-between ">
+      <form action="/searchSort" class="d-flex flex-row justify-content-between ">
         <div class="w-25 d-flex flex-row">
           <input type="text" name="keyword" class="form-control search-input" placeholder="輸入餐廳、分類"
             aria-label="Restaurant Name..." value="{{keywords}}" aria-describedby="search-button">
@@ -17,7 +17,7 @@
 </div>
 
 <!-- dropdown -->
-  <form action="/sort">
+  <form action="/searchSort">
     <input type="checkbox" class="drop-down-checkbox" id="drop-down-checkbox">
     <div class="drop-down">
       <label for="drop-down-checkbox">

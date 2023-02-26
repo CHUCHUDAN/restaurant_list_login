@@ -5,11 +5,10 @@ const router = express.Router()
 const home = require("./modules/home")
 const rests = require('./modules/rests')
 const search = require('./modules/search')
-const sort = require('./modules/sort')
+const searchSort = require('./modules/searchSort')
 
 router.use('/', home)
 router.use('/rests', rests)
-router.use('/search', search)
-router.use('/sort', sort)
+router.use('/searchSort', searchSort)
 
 module.exports = router

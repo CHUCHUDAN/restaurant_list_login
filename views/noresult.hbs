@@ -2,7 +2,7 @@
 <div class="container mt-5">
   <div class="row search-bar-inner">
     <div class="col-md-10 col-12 mx-auto">
-      <form action="/search" class="d-flex flex-row justify-content-between ">
+      <form action="/searchSort" class="d-flex flex-row justify-content-between ">
         <div class="w-25 d-flex flex-row">
           <input type="text" name="keyword" class="form-control search-input" placeholder="輸入餐廳、分類"
             aria-label="Restaurant Name..." value="{{keywords}}" aria-describedby="search-button">
@@ -10,25 +10,41 @@
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
         </div>
-        <!-- dropdown -->
-        <div class="dropdown me-1">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            排序
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" name="name" href="/sort/A-Z">A -> Z</a></li>
-            <li><a class="dropdown-item" href="/sort/Z-A">Z -> A</a></li>
-            <li><a class="dropdown-item" href="/sort/category">類別</a></li>
-            <li><a class="dropdown-item" href="/sort/location">地區</a></li>
-            <li><a class="dropdown-item" href="/sort/rating">評分</a></li>
-          </ul>
-        </div>
       </form>
     </div>
 
   </div>
 </div>
+
+<!-- dropdown -->
+<form action="/searchSort">
+  <input type="checkbox" class="drop-down-checkbox" id="drop-down-checkbox">
+  <div class="drop-down">
+    <label for="drop-down-checkbox">
+      <i class="fa-solid fa-filter fa-lg drop-down-filter"></i>
+    </label>
+    <ul class="drop-down-list">
+      <li class="drop-down-item ">
+        <button class="drop-down-button drop-top" type="submit" name="word" value="_id,asc">default</button>
+      </li>
+      <li class="drop-down-item ">
+        <button class="drop-down-button" type="submit" name="word" value="name,asc" value="">A-Z</button>
+      </li>
+      <li class="drop-down-item">
+        <button class="drop-down-button" type="submit" name="word" value="name,desc">Z-A</button>
+      </li>
+      <li class="drop-down-item ">
+        <button class="drop-down-button" type="submit" name="word" value="category,asc">category</button>
+      </li>
+      <li class="drop-down-item">
+        <button class="drop-down-button" name="word" value="location,asc" type="submit">location</button>
+      </li>
+      <li class="drop-down-item cancel-border">
+        <button class="drop-down-button drop-bottom" name="word" value="rating,desc" type="submit">rating</button>
+      </li>
+    </ul>
+  </div>
+</form>
 
 <div class="container mt-3">
   <div class="row justify-content-center">
