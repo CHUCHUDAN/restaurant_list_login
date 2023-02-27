@@ -4,7 +4,6 @@ const router = express.Router()
 
 const home = require("./modules/home")
 const rests = require('./modules/rests')
-const search = require('./modules/search')
 const searchSort = require('./modules/searchSort')
 
 router.use('/', home)
