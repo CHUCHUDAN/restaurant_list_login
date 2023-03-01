@@ -11,7 +11,7 @@ const Rest = require('../../models/rest')
 //首頁render mongodb資料
 router.get('/', (req, res) => {
   const name = "dan"
-  data.searchState = 'N'
+  data.searchKeyword = 'null'
   Rest.find()
     .lean()
     .then(rests => res.render('index', { rests , name}))
