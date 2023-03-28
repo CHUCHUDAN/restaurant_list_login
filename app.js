@@ -8,6 +8,9 @@ const port = 3000
 //引入handlebars
 const exphbs = require('express-handlebars')
 
+//引入session
+const session = require('express-session')
+
 
 //引入method-override
 const methodOverride = require('method-override')
@@ -28,7 +31,11 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 
-
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 
 // 用 app.use 規定每一筆請求都需要透過 express.static 進行前置處理
 app.use(express.static('public'))
