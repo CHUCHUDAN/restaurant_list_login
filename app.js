@@ -51,6 +51,12 @@ app.use(methodOverride('_method'))
 
 UsePassport(app)
 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  next()
+})
+
 //每筆request都會先經過routes處理
 app.use(routes)
 
