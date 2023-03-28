@@ -3,19 +3,29 @@ const router = express.Router()
 const User = require('../../models/users')
 const passport = require('passport')
 
+//登入頁面
 router.get('/login', (req, res) => {
   res.render('login')
 })
 
+//登入功能
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login'
 }))
 
+//登出功能
+router.get('/logout', (req, res) => {
+  req.logout()
+  res.redirect('/users/login')
+})
+
+//註冊頁面
 router.get('/register', (req, res) => {
   res.render('register')
 })
 
+//註冊功能
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   User.findOne({ email })
