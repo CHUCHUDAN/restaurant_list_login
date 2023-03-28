@@ -22,6 +22,9 @@ const routes = require('./routes')
 //引入body-parser
 const bodyParser = require('body-parser')
 
+//引入passport
+const UsePassport = require('./config/passport')
+
 
 
 //引入mongoose模組
@@ -45,6 +48,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 //每筆request都會先經過method-override處理
 app.use(methodOverride('_method'))
+
+UsePassport(app)
 
 //每筆request都會先經過routes處理
 app.use(routes)
