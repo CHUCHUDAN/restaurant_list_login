@@ -9,7 +9,6 @@ const Rest = require('../../models/rest')
 //首頁render mongodb資料
 router.get('/', (req, res) => {
   const userId = req.user._id
-  console.log(req)
   Rest.find({ userId })
     .lean()
     .then(rests => res.render('index', { rests}))
