@@ -2,8 +2,12 @@
 const express = require('express')
 const app = express()
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 //設定埠號
-const port = 3000
+const PORT = process.env.PORT
 
 //引入handlebars
 const exphbs = require('express-handlebars')
@@ -29,7 +33,6 @@ const bodyParser = require('body-parser')
 const UsePassport = require('./config/passport')
 
 
-
 //引入mongoose模組
 require('./config/mongoose')
 
@@ -38,7 +41,7 @@ app.set('view engine', 'hbs')
 
 
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
@@ -71,6 +74,6 @@ app.use(routes)
 
 
 //啟動並監聽伺服器
-app.listen(port, () => {
-  console.log(`The web is Listen on http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`The web is Listen on http://localhost:${PORT}`)
 })
