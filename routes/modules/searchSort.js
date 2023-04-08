@@ -11,8 +11,9 @@ router.get('/', (req, res) => {
   let sort = req.query.sort || '_id,asc'
   sort = fixSortWord(sort)
   const regexTerm = new RegExp(keywords, 'i'); // 不區分大小寫的正則表達式
+  const userId = req.user._id
   if (keywords === undefined) {
-    return Rest.find()
+    return Rest.find({ userId })
       .lean()
       .sort([sort])
       .then(rests => {
@@ -21,16 +22,26 @@ router.get('/', (req, res) => {
       .catch(err => console.log(err))
   }
   keywords = keywords.trim()
-  fix(res, regexTerm, keywords, sort)
+  fix(res, regexTerm, keywords, sort, userId)
 })
 
 
-function fix (res, regexTerm, keywords, sort) {
+function fix(res, regexTerm, keywords, sort, userId) {
   if (keywords === '') return res.redirect('/')
   Rest.find({
-    $or: [
-      { name: regexTerm },
-      { category: regexTerm }
+    $and: [
+      {
+        $or: [
+          { name: regexTerm },
+          { category: regexTerm },
+
+        ]
+      },
+      {
+        $or: [
+          { userId }
+        ]
+      }
     ]
   })
     .lean()
@@ -42,7 +53,7 @@ function fix (res, regexTerm, keywords, sort) {
     .catch(error => console.error(error))
 }
 
-function fixSortWord (word) {
+function fixSortWord(word) {
   const array = word.split(',')
   const sortKey = array[0]
   const sortValue = array[1]
