@@ -6,6 +6,10 @@
 ---
 ![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
 -------
+![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
+-------
+![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
+-------
 ![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index2.png)
 -------
 ![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/detail.png)
@@ -18,7 +22,7 @@
 -------
 Features - 產品功能
 -----
-1.使用者可以瀏覽全部餐廳。
+1.使用者可以瀏覽個人帳號的全部餐廳。
 
 2.使用者可以點擊任一餐廳查看餐廳詳細資料，如地址、電話、簡介、圖片。
 
@@ -33,6 +37,12 @@ Features - 產品功能
 7.使用者可透過詳細頁面連結到google-map查看餐廳位置。
 
 8.使用者可以根據A-Z、Z-A、類別、地區、評分進行排序，對於搜尋結果也可以進行排序。
+
+9.使用者可以註冊帳號
+
+10.使用者可以登入/登出並且登入狀態下可以管理個人餐廳清單
+
+11.使用者可以透過第三方FB進行登入
 
 Environment SetUp - 環境建置
 -----
