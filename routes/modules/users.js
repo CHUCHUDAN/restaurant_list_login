@@ -12,8 +12,9 @@ router.get('/login', (req, res) => {
 //登入功能
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
-  failureRedirect: '/users/login'
+  failureRedirect: '/users/login',
 }))
+
 
 //登出功能
 router.get('/logout', (req, res) => {
@@ -31,8 +32,8 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
   const { name, email, password, confirmPassword } = req.body
   const errors = []
-  if (!name || !email || !password || !confirmPassword) {
-    errors.push({ message: '所有欄位皆為必填!' })
+  if (!email || !password || !confirmPassword) {
+    errors.push({ message: '信箱及密碼欄位皆為必填!' })
   }
   if (password !== confirmPassword) {
     errors.push({ message: '密碼與確認密碼不相符!' })
