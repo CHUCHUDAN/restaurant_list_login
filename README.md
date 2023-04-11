@@ -4,21 +4,21 @@
 
 專案畫面
 ---
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/login.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/register.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/index.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/index2.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/index2.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/detail.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/detail.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/edit.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/edit.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/new.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/new.png)
 -------
-![image](https://github.com/CHUCHUDAN/restaurant_list_refactor/blob/main/public/img/sort.png)
+![image](https://github.com/CHUCHUDAN/restaurant_list_login/blob/main/public/img/sort.png)
 -------
 Features - 產品功能
 -----
@@ -53,11 +53,11 @@ Installing - 專案安裝流程
 ----
 1.打開你的 terminal，Clone 此專案至本機電腦
 
-    git clone https://github.com/CHUCHUDAN/restaurant_list_refactor.git
+    git clone https://github.com/CHUCHUDAN/restaurant_list_login.git
     
 2.開啟終端機(Terminal)，進入存放此專案的資料夾
 
-    cd restaurant_list_refactor
+    cd restaurant_list_login
     
 3.安裝 express 套件
 
@@ -67,9 +67,14 @@ Installing - 專案安裝流程
     
     在 Terminal 輸入 npm install nodemon 指令
     
-5.請自行新增.env檔案放置與資料庫MongoDB連線相關資料
+5.請自行新增.env檔案放置與檔案相關的敏感資訊可參考.env.example檔案內容
 
     MONGODB_URI= "您的MongoDB連線資訊"
+    FACEBOOK_ID="您的FB_ID"
+    FACEBOOK_SECRET="您的FB密鑰"
+    FACEBOOK_CALLBACK=http://localhost:3000/auth/facebook/callback
+    SESSION_SECRET=ThisIsMySecret
+    PORT=3000
     
 6.啟動伺服器
   
