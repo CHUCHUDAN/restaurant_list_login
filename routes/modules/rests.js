@@ -43,15 +43,17 @@ router.put('/:id', (req, res) => {
   const { name, name_en, category, image, location, phone, google_map, rating, description } = req.body
   return Rest.findOne({ _id, userId })
     .then((rest) => {
-      rest.name = name
-      rest.name_en = name_en
-      rest.category = category
-      rest.image = image
-      rest.location = location
-      rest.phone = phone
-      rest.google_map = google_map
-      rest.rating = rating
-      rest.description = description
+      rest = Object.assign(rest, {
+        name,
+        name_en,
+        category,
+        image,
+        location,
+        phone,
+        google_map,
+        rating,
+        description
+      })
       return rest.save()
     })
     .then(() => res.redirect(`/rests/${_id}`))
