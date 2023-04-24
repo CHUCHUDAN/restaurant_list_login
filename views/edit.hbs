@@ -5,57 +5,57 @@
       <form novalidate action="/rests/{{rest._id}}?_method=PUT" method="POST" class="edit-form">
         <div class="mb-3">
           <label for="name" class="form-label">餐廳名稱</label>
-          <input type="text" class="form-control" id="name" name="name" value="{{rest.name}}" required>
+          <input type="text" class="form-control" id="name" name="name" value="{{rest.name}}" placeholder="請填寫餐廳名稱" maxlength="20" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="name_en" class="form-label">餐廳英文名稱</label>
-          <input type="text" class="form-control" id="name_en" name="name_en" value="{{rest.name_en}}" required>
+          <input type="text" class="form-control" id="name_en" name="name_en" value="{{rest.name_en}}" placeholder="請填寫餐廳英文名稱" maxlength="20" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="category" class="form-label">餐廳種類</label>
-          <input type="text" class="form-control" id="category" name="category" value="{{rest.category}}" required>
+          <input type="text" class="form-control" id="category" name="category" value="{{rest.category}}" placeholder="請填寫餐廳種類" maxlength="20" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">餐廳圖片</label>
-          <input type="text" class="form-control" id="image" name="image" value="{{rest.image}}" required>
+          <input type="text" class="form-control" id="image" name="image" value="{{rest.image}}" placeholder="請輸入餐廳圖片網址" maxlength="200" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="location" class="form-label">餐廳地址</label>
-          <input type="text" class="form-control" id="location" name="location" value="{{rest.location}}" required>
+          <input type="text" class="form-control" id="location" name="location" value="{{rest.location}}" placeholder="請填寫餐廳地址" maxlength="100" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">餐廳電話</label>
-          <input type="text" class="form-control" id="phone" name="phone" value="{{rest.phone}}" required>
+          <input type="text" class="form-control" id="phone" name="phone" value="{{rest.phone}}" placeholder="請填寫餐廳電話" maxlength="20" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="google_map" class="form-label">餐廳google map</label>
           <input type="text" class="form-control" id="google_map" name="google_map" value="{{rest.google_map}}"
-            required>
+            placeholder="請填寫餐廳google-map地址" maxlength="100" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
         <div class="mb-3">
           <label for="rating" class="form-label">餐廳評分</label>
-          <input type="text" class="form-control" id="rating" name="rating" value="{{rest.rating}}" required>
+          <input type="number" class="form-control" id="rating" name="rating" value="{{rest.rating}}" min="1" max="5" placeholder="請填寫餐廳評分1-5" required>
           <div class="valid-feedback">格式符合</div>
-          <div class="invalid-feedback">這個項目必填</div>
+          <div class="invalid-feedback">這個項目必填且只能填寫分數1-5</div>
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">餐廳簡短描述</label>
           <input type="text" class="form-control" id="description" name="description" value="{{rest.description}}"
-            required>
+            placeholder="請簡單描述餐廳" maxlength="200" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
