@@ -23,7 +23,7 @@
         </div>
         <div class="mb-3">
           <label for="image" class="form-label">餐廳圖片</label>
-          <input type="text" class="form-control" id="image" name="image" value="{{rest.image}}" placeholder="請輸入餐廳圖片網址" maxlength="200" required>
+          <input type="text" class="form-control" id="image" name="image" value="{{rest.image}}" placeholder="請輸入餐廳圖片網址" maxlength="4096" required>
           <div class="valid-feedback">格式符合</div>
           <div class="invalid-feedback">這個項目是必填</div>
         </div>
@@ -35,16 +35,16 @@
         </div>
         <div class="mb-3">
           <label for="phone" class="form-label">餐廳電話</label>
-          <input type="text" class="form-control" id="phone" name="phone" value="{{rest.phone}}" placeholder="請填寫餐廳電話" maxlength="20" required>
+          <input type="tel" pattern="^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$" class="form-control" id="phone" name="phone" value="{{rest.phone}}" placeholder="請填寫餐廳電話"  required>
           <div class="valid-feedback">格式符合</div>
-          <div class="invalid-feedback">這個項目是必填</div>
+          <div class="invalid-feedback">這個項目是必填且填寫正確電話格式</div>
         </div>
         <div class="mb-3">
           <label for="google_map" class="form-label">餐廳google map</label>
-          <input type="text" class="form-control" id="google_map" name="google_map" value="{{rest.google_map}}"
+          <input type="url" pattern="^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$" class="form-control" id="google_map" name="google_map" value="{{rest.google_map}}"
             placeholder="請填寫餐廳google-map地址" maxlength="100" required>
           <div class="valid-feedback">格式符合</div>
-          <div class="invalid-feedback">這個項目是必填</div>
+          <div class="invalid-feedback">這個項目是必填且填寫正確網址格式</div>
         </div>
         <div class="mb-3">
           <label for="rating" class="form-label">餐廳評分</label>
@@ -57,7 +57,7 @@
           <input type="text" class="form-control" id="description" name="description" value="{{rest.description}}"
             placeholder="請簡單描述餐廳" maxlength="200" required>
           <div class="valid-feedback">格式符合</div>
-          <div class="invalid-feedback">這個項目是必填</div>
+          <div class="invalid-feedback">這個項目是必填且填寫200字內描述</div>
         </div>
         <button type="submit" class="btn btn-primary submit-btn">完成</button>
       </form>
